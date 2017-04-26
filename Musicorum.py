@@ -1,6 +1,9 @@
 from bottle import route, run, request
 import spotipy
 from spotipy import oauth2
+import ctypes
+import os
+import urllib
 
 PORT_NUMBER = 3000
 SPOTIPY_CLIENT_ID='0aba7752b92a456dbd489873b3d80dea'
@@ -32,7 +35,21 @@ def index():
     if access_token:
         print "Access token available! Trying to get user information..."
         sp = spotipy.Spotify(access_token)
-        results = sp.current_user()
+        results = sp.current_user_saved_tracks()
+
+        index = 0 # Python's indexing starts at zero
+        for item in results['items']:
+            track = item['track']
+            indexString = str(index)
+            urllib.urlretrieve(track['album']['images'][0]['url'], "0000000"+indexString+".jpg")
+            index += 1
+        #gets the current directory
+        cwd = os.getcwd()
+        #adds the image to the current directory
+        SPI_SETDESKWALLPAPER = 20
+        image_path = os.path.join(cwd, "00000000.jpg")
+        #changes the desktop background to said image
+        ctypes.windll.user32.SystemParametersInfoA(SPI_SETDESKWALLPAPER, 0, image_path, 3)
         return results
 
     else:
