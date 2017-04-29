@@ -1,0 +1,10 @@
+[Desktop Entry]
+Version=1.0
+Name=Musicorum
+Comment=Application to provide a desktop enabled Spotify experience!
+Exec=python C:/Users/Nick/Desktop/Projects/Backgrounds/MusicalBackground/Musicorum.py
+Icon=C:/Users/Nick/Desktop/Projects/Backgrounds/MusicalBackground/Musicorum.py
+Path=C:/Users/Nick/Desktop/Projects/Backgrounds/MusicalBackground/
+Terminal=false
+Type=Application
+Categories=Utility;Application;

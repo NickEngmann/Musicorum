@@ -5,7 +5,6 @@ import ctypes
 import os
 import urllib
 import requests
-import schedule
 import time
 
 PORT_NUMBER = 3000
